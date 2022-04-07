@@ -37,7 +37,7 @@ resource "aws_security_group" "web_sg" {
       from_port        = ingress.value.port
       to_port          = ingress.value.port
       protocol         = "tcp"
-      cidr_blocks      = ["111.92.44.80/32"]
+      cidr_blocks      = ["111.92.89.198/32"]
       prefix_list_ids  = []
       ipv6_cidr_blocks = []
       security_groups  = []
