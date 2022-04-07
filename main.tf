@@ -9,7 +9,7 @@ terraform {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDIt4bNFgChOdk78YbuWY8nvVhmQCFa3P19ZPksPRNCJ2Kv4P4SydvBPpfkuNOhfEUJzywnsI/eCtgEqXru6G4JVRYq1RZLP2+fvrfDHC7OWUNnZHacFe2NBxRW9ivallWdwQfIfGN9Q/R3hXjWOYDSXqnHXfOx9N1D/gD7HNcF63vtJEsd0ntV8MAxJcZJWGrB6MPNWCC2gcb3FGMZsZQQOat4oTzWZ1so8+gnB1iVwTe2VJ/9Bl2y/3oeKMxdsTn7vlFlJtFElqcIj2Z725ED4W1cnk0FpHkEMLunINDEOOuzyZbtV/8+EvDHyFgflJ2AHjBO3C1bHlty+62veO6VUMF+AGAms2sQ+ModDQ6Vdvm+4u0jhN2p1l6eX0mJES6TYPpYEZlRBdm3y73GpZiKmz22xrbm0vLNVUw5o+94VS17pznKbO1eTxULqTkrxSZF34WV0CsBPpxXNF220AzHJrWI1SKe5ORIhWv47ySI6Nr1WInmc65ZiEmUpkq4QUE= anil"
+  public_key = var.public_key
 }
 
 locals {
@@ -37,7 +37,7 @@ resource "aws_security_group" "web_sg" {
       from_port        = ingress.value.port
       to_port          = ingress.value.port
       protocol         = "tcp"
-      cidr_blocks      = ["111.92.89.198/32"]
+      cidr_blocks      = [var.inbound_ip]
       prefix_list_ids  = []
       ipv6_cidr_blocks = []
       security_groups  = []
