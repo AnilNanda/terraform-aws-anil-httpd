@@ -71,6 +71,6 @@ resource "aws_instance" "webserver" {
 
 resource "null_resource" "status" {
   provisioner "local-exec" {
-    command = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.webserver[0].id}"
+    command = "aws ec2 wait instance-status-ok --instance-ids ${aws_instance.webserver[0].id} --region us-east-1"
   }
 }
