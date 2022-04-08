@@ -57,6 +57,7 @@ resource "aws_security_group" "web_sg" {
 tags = {
  "Name" = "webserver-sg"
 }
+}
 
 resource "aws_instance" "webserver" {
   count           = 1
