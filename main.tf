@@ -54,6 +54,8 @@ resource "aws_security_group" "web_sg" {
     security_groups  = []
     self             = false
   }
+tags = {
+ "Name" = "webserver-sg"
 }
 
 resource "aws_instance" "webserver" {
